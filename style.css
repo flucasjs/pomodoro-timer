@@ -1,0 +1,88 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    background: whitesmoke;
+    margin: 0;
+    padding: 0;
+}
+
+.title-container {
+    margin: 25px auto 10px;
+    width: 500px;
+}
+
+#title {
+    margin: 0 auto;
+    font-size: 48px;
+    text-align: center;
+    color: #a34545;
+}
+
+.container {
+    margin: 0 auto;
+    padding-top: 25px;
+    background: #d34f4f;
+    height: 450px;
+    width: 500px;
+    border-radius: 15px 15px;
+    box-shadow: 0px 10px 6px -6px rgba(0, 0, 0, 0.4);
+}
+
+.interval-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+.interval-container button {
+    background: white;
+    font-size: 16px;
+    height: 50px;
+    width: 125px;
+    border-radius: 5px 5px;
+    border: 5px outset #d34f4f;
+}
+
+.interval-container button:active {
+    border: 5px inset #d34f4f;
+}
+
+.countdown-container {
+    background: black;
+    margin: auto;
+    width: 250px;
+    border: 5px inset silver;
+}
+
+#countdown {
+    margin: auto;
+    color: white;
+    font-size: 48px;
+    text-align: center;
+}
+
+.start-container {
+    margin: 90px auto 0;
+    display: flex;
+    height: 60px;
+    width: 110px;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-container button {
+    background: white;
+    border-radius: 5px 5px;
+    height: 100%;
+    width: 100%;
+    margin: 50 auto;
+    border: 5px outset #d34f4f; 
+    font-size: 16px;
+}
+
+.start-container button:active {
+    border: 5px inset #d34f4f;
+}
