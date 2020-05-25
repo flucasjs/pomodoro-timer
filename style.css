@@ -9,19 +9,20 @@ body {
 }
 
 .title-container {
-    margin: 25px auto 10px;
+    margin: 5px auto 30px;
     width: 500px;
 }
 
 #title {
     margin: 0 auto;
-    font-size: 48px;
+    font-size: 46px;
     text-align: center;
-    color: #a34545;
+    color: white;
+    font-family: 'Montserrat Subrayada', sans-serif;
 }
 
 .container {
-    margin: 0 auto;
+    margin: 25px auto 0px;
     padding-top: 25px;
     background: #d34f4f;
     height: 450px;
@@ -33,8 +34,8 @@ body {
 .interval-container {
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
-    margin-bottom: 100px;
+    margin-top: 25px;
+    margin-bottom: 50px;
 }
 
 .interval-container button {
@@ -42,7 +43,9 @@ body {
     font-size: 16px;
     height: 50px;
     width: 125px;
+    color: #963737;
     border-radius: 5px 5px;
+    font-family: 'Nunito Sans', sans-serif;
     border: 5px outset #d34f4f;
 }
 
@@ -51,21 +54,21 @@ body {
 }
 
 .countdown-container {
-    background: black;
-    margin: auto;
+    background: white;
+    margin: 50px auto 50px;
     width: 250px;
-    border: 5px inset silver;
+    border: 5px inset #d34f4f;
 }
 
 #countdown {
     margin: auto;
-    color: white;
+    color: #963737;
     font-size: 48px;
     text-align: center;
 }
 
 .start-container {
-    margin: 90px auto 0;
+    margin: 25px auto 0;
     display: flex;
     height: 60px;
     width: 110px;
@@ -81,6 +84,8 @@ body {
     margin: 50 auto;
     border: 5px outset #d34f4f; 
     font-size: 16px;
+    color: #963737;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .start-container button:active {
