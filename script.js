@@ -42,28 +42,58 @@ window.addEventListener("load", (event) => {
 
 document.getElementById("pomodoro").addEventListener("click", (event) => {
 
-    let time = 1500;
-    setTimer(time);
+    let totalSeconds = 1500;
+
+    if (start.value == 0) { 
+
+        setTimer(totalSeconds);
+
+    } else { 
+
+        location.reload();
+
+    };
+    
 
 });
 
 document.getElementById("short-break").addEventListener("click", (event) => {
 
-    let time = 600;
-    setTimer(time);
+    let totalSeconds = 300;
+    
+    if (start.value == 0) { 
+
+        setTimer(totalSeconds);
+
+    } else { 
+
+        location.reload();
+
+    };
+    
     
 });
 
 document.getElementById("long-break").addEventListener("click", (event) => {
 
-    let time = 300;
-    setTimer(time);
+    let totalSeconds = 600;
     
+    if (start.value == 0) { 
+
+        setTimer(totalSeconds);
+
+    } else { 
+
+        location.reload();
+
+    };
+       
 });
 
 document.getElementById("start").addEventListener("click", (event) => {
 
     let start = document.getElementById("start");
+
     if (start.value == 0) { 
 
         start.value++;
@@ -71,19 +101,19 @@ document.getElementById("start").addEventListener("click", (event) => {
 
     } else { 
 
-        location.reload()
+        location.reload();
 
     };
 
     let timeString = document.getElementById("countdown").innerHTML;
     let timeArray = timeString.split(":");
-
-    let totalSeconds = +timeArray[1] + (timeArray[0] * 60);
+    let totalSeconds = +(timeArray[0] * 60) + +timeArray[1];
     let totalMS = totalSeconds * 1000;
+    
     let count = countDown(totalSeconds);
+    let interval = setInterval(count, 1000);
 
     count();
-    let interval = setInterval(count, 1000);
     setTimeout( () => clearInterval(interval), totalMS)
 
 });
