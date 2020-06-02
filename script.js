@@ -41,23 +41,21 @@ class Timer {
             this.activeTimers[key].id = setInterval(this.activeTimers[key].cb, interval);
 
         };
+
     }
 
 }
 
 function displayTime(minutes, seconds) {
 
-    if (minutes < 10 || seconds < 10) {
+    if (seconds < 10) {
 
-        minutes = (0 + String(minutes)).slice(-2);
         seconds = (0 + String(seconds)).slice(-2);
 
     }
     
     document.getElementById("countdown").innerHTML = `${minutes}:${seconds}`;
     
-    
-
 }
 
 function setTimer(time) {
@@ -113,13 +111,13 @@ function updateTimer() {
 
     } else if (totalSeconds == longBreak) {
 
-        key = "longBreak"
-        document.getElementById("start").dataset.currentTimer = "longBreak";
+        key = "long-break"
+        document.getElementById("start").dataset.currentTimer = "long-break";
 
     } else if (totalSeconds == shortBreak) {
 
-        key = "shortBreak"
-        document.getElementById("start").dataset.currentTimer = "shortBreak";
+        key = "short-break"
+        document.getElementById("start").dataset.currentTimer = "short-break";
 
     } else {
         key = "continue";
@@ -130,11 +128,17 @@ function updateTimer() {
     window.timer.start(key, countDown(totalSeconds), 1000, 1);
     
     // Move this.
-    setTimeout(() => window.timer.clear(key), totalSeconds * 1000);
+    setTimeout(() => {resetTimerDisplay(key)}, totalSeconds * 1000);
 
-    
+}
 
-    
+
+function resetTimerDisplay(key) {
+
+    window.timer.clear(key); 
+    setTimer(document.getElementById(key).value); 
+    document.getElementById("start").innerHTML = "Start"; 
+    document.getElementById("start").value = 0;
 
 }
 
@@ -176,7 +180,7 @@ document.getElementById("pomodoro").addEventListener("click", (event) => {
 
 document.getElementById("short-break").addEventListener("click", (event) => {
 
-    let totalSeconds = document.getElementById("long-break").value = 600;
+    let totalSeconds = document.getElementById("long-break").value = 300;
 
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
@@ -186,7 +190,7 @@ document.getElementById("short-break").addEventListener("click", (event) => {
 
     } else if (start.value == 1) {
 
-        if (currentTimer != "longBreak") {
+        if (currentTimer != "long-break") {
 
             timer.clear(currentTimer);
             setTimer(totalSeconds);
@@ -201,7 +205,7 @@ document.getElementById("short-break").addEventListener("click", (event) => {
 
 document.getElementById("long-break").addEventListener("click", (event) => {
 
-    let totalSeconds = document.getElementById("short-break").value = 10;
+    let totalSeconds = document.getElementById("short-break").value = 600;
 
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
@@ -211,7 +215,7 @@ document.getElementById("long-break").addEventListener("click", (event) => {
 
     } else if (start.value == 1) {
 
-        if (currentTimer != "shortBreak") {
+        if (currentTimer != "short-break") {
 
             timer.clear(currentTimer);
             setTimer(totalSeconds);
@@ -229,7 +233,7 @@ document.getElementById("start").addEventListener("click", (event) => {
     let start = document.getElementById("start");
     let currentTimer = document.getElementById("start").dataset.currentTimer;
     
-    if (start.value == 0) { 
+    if (start.value == 0) {
 
         start.value++;
         start.innerHTML = "Stop";
