@@ -47,7 +47,16 @@ class Timer {
 
 function displayTime(minutes, seconds) {
 
+    if (minutes < 10 || seconds < 10) {
+
+        minutes = (0 + String(minutes)).slice(-2);
+        seconds = (0 + String(seconds)).slice(-2);
+
+    }
+    
     document.getElementById("countdown").innerHTML = `${minutes}:${seconds}`;
+    
+    
 
 }
 
@@ -192,7 +201,7 @@ document.getElementById("short-break").addEventListener("click", (event) => {
 
 document.getElementById("long-break").addEventListener("click", (event) => {
 
-    let totalSeconds = document.getElementById("short-break").value = 300;
+    let totalSeconds = document.getElementById("short-break").value = 10;
 
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
