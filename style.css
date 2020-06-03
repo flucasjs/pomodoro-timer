@@ -67,27 +67,26 @@ body {
     text-align: center;
 }
 
-.start-container {
+.control-container {
     margin: 25px auto 0;
     display: flex;
     height: 60px;
-    width: 110px;
+    width: 240px;
     align-items: center;
     justify-content: center;
 }
 
-.start-container button {
+.control-container button {
     background: white;
     border-radius: 5px 5px;
     height: 100%;
     width: 100%;
-    margin: 50 auto;
     border: 5px outset #d34f4f; 
     font-size: 16px;
     color: #963737;
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.start-container button:active {
+.control-container button:active {
     border: 5px inset #d34f4f;
 }
