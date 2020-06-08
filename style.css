@@ -90,3 +90,19 @@ body {
 .control-container button:active {
     border: 5px inset #d34f4f;
 }
+
+#theme {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 25px;
+    height: 25px;
+}
+
+#theme i {
+    font-size: 30px;
+}
+
+#theme i:hover {
+    cursor: pointer;
+}
