@@ -1,8 +1,32 @@
 // ---------- EVENT LISTENERS ---------- //
 
+window.addEventListener("load", (event) => {
+
+    document.getElementById("start").value = 0;
+    document.getElementById("pomodoro").value = 1500;
+    document.getElementById("long-break").value = 600;
+    document.getElementById("short-break").value = 300;
+
+    document.getElementById("start").dataset.currentTimer = "pomodoro";
+
+    window.timer = new Timer();
+
+    window.TOGGLEON = "fa-toggle-on";
+    window.TOGGLEOFF = "fa-toggle-off";
+
+    window.style = localStorage.getItem("THEME");
+
+    if (window.style == "dark") { 
+
+        setTheme(document.getElementById("toggle"));
+
+    }
+    
+});
+
 document.getElementById("pomodoro").addEventListener("click", (event) => {
 
-    let totalSeconds = document.getElementById("pomodoro").value = 1500;
+    let totalSeconds = document.getElementById("pomodoro").value;
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
     document.getElementById("start").dataset.currentTimer = "pomodoro";
@@ -27,7 +51,7 @@ document.getElementById("pomodoro").addEventListener("click", (event) => {
 
 document.getElementById("short-break").addEventListener("click", (event) => {
 
-    let totalSeconds = document.getElementById("short-break").value = 300;
+    let totalSeconds = document.getElementById("short-break").value;
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
     document.getElementById("start").dataset.currentTimer = "short-break";
@@ -53,7 +77,7 @@ document.getElementById("short-break").addEventListener("click", (event) => {
 
 document.getElementById("long-break").addEventListener("click", (event) => {
 
-    let totalSeconds = document.getElementById("long-break").value = 600;
+    let totalSeconds = document.getElementById("long-break").value;
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
     document.getElementById("start").dataset.currentTimer = "long-break";
@@ -270,43 +294,20 @@ function updateTimer() {
     window.timer.start(key, countDown(totalSeconds), 1000, 1);
     
     // Move this.
-    setTimeout(() => {resetTimerDisplay(key)}, totalSeconds * 1000);
+    setTimeout(() => {resetTimerDisplay(key);}, totalSeconds * 1000);
 
 }
 
 
 function resetTimerDisplay(key) {
 
+    playAudio("bell.ogg");
     window.timer.clear(key); 
     setTimer(document.getElementById(key).value); 
     document.getElementById("start").innerHTML = "Start"; 
     document.getElementById("start").value = 0;
 
 }
-
-window.addEventListener("load", (event) => {
-
-    document.getElementById("start").value = 0;
-    document.getElementById("pomodoro").value = 1500;
-    document.getElementById("long-break").value = 600;
-    document.getElementById("short-break").value = 300;
-
-    document.getElementById("start").dataset.currentTimer = "pomodoro";
-
-    window.timer = new Timer();
-
-    window.TOGGLEON = "fa-toggle-on";
-    window.TOGGLEOFF = "fa-toggle-off";
-
-    window.style = localStorage.getItem("THEME");
-
-    if (window.style == "dark") { 
-
-        setTheme(document.getElementById("toggle"));
-
-    }
-    
-});
 
 function setTheme(element) {
     
@@ -351,7 +352,7 @@ function setTheme(element) {
 
             intervalButtons[i].style.background = darkContainerColor;
             intervalButtons[i].style.color = darkTextColor;
-            intervalButtons[i].style.border = darkBorderInset;
+            intervalButtons[i].style.border = darkBorderOutset;
         
         }
 
@@ -395,5 +396,12 @@ function setTheme(element) {
         localStorage.setItem("THEME", "light");
 
     }
+
+}
+
+function playAudio(soundFile) {
+
+    let audio = new Audio(soundFile);
+    audio.play()
 
 }
