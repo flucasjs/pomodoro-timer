@@ -320,76 +320,54 @@ function setTheme(element) {
     let countdownDisplay = document.querySelector(".countdown-container");
     let countdownText = document.getElementById("countdown");
     let controlButtons = document.querySelectorAll(".control-container button");
-    
-    let darkBackgroundColor = "rgba(0, 0, 0, .75)";
-    let darkAppColor = "black";
-    let darkContainerColor = "black";
-    let darkTitleColor = "green";
-    let darkTextColor = "green";
-    let darkBorderInset = "5px inset green";
-    let darkBorderOutset = "5px outset green";
-
-    let lightBackgroundColor = "whitesmoke";
-    let lightAppColor = "#d34f4f";
-    let lightContainerColor = "white";
-    let lightTitleColor = "white";
-    let lightTextColor = "#963737";
-    let lightBorderInset = "5px inset #d34f4f";
-    let lightBorderOutset = "5px outset #d34f4f";
-
 
     if (element.classList.contains(TOGGLEON)) {
 
-        document.body.style.background = darkBackgroundColor;
-        app.style.background = darkAppColor;
-        title.style.color = darkTitleColor;
-        countdownDisplay.style.color = darkTextColor;
-        countdownDisplay.style.background = darkContainerColor;
-        countdownDisplay.style.border = darkBorderInset;
-        countdownText.style.color = darkTextColor;
+        document.body.style.background = "rgba(0, 0, 0, .75)";
+        app.style.background = "black";
+        title.style.color = "green";
+        countdownDisplay.style.color = "green";
+        countdownDisplay.style.background = "black";
+        countdownDisplay.style.border = "5px inset green";
+        countdownText.style.color = "green";
         
-        for (let i = 0; i < intervalButtons.length; i++) {
+        for (let button of intervalButtons) {
 
-            intervalButtons[i].style.background = darkContainerColor;
-            intervalButtons[i].style.color = darkTextColor;
-            intervalButtons[i].style.border = darkBorderOutset;
+            button.classList.remove("light-theme");
+            button.classList.add("night-theme");
         
         }
 
-        for (let i = 0; i < controlButtons.length; i++) {
-
-            controlButtons[i].style.background = darkContainerColor;
-            controlButtons[i].style.color = darkTextColor;
-            controlButtons[i].style.border = darkBorderOutset;
+        for (let button of controlButtons) {
+;
+            button.classList.remove("light-theme");
+            button.classList.add("night-theme");
 
         }
 
         localStorage.setItem("THEME", "dark");
         
-        
     } else {
 
-        document.body.style.background = lightBackgroundColor;
-        app.style.background = lightAppColor;
-        title.style.color = lightTitleColor;
-        countdownDisplay.style.color = lightTextColor;
-        countdownDisplay.style.background = lightContainerColor;
-        countdownText.style.color = lightTextColor;
-        countdownDisplay.style.border = lightBorderInset;
+        document.body.style.background = "whitesmoke";
+        app.style.background = "#d34f4f";
+        title.style.color = "white";
+        countdownDisplay.style.color = "#963737";
+        countdownDisplay.style.background = "white";
+        countdownText.style.color = "#963737";
+        countdownDisplay.style.border = "5px inset #d34f4f";
 
-        for (let i = 0; i < intervalButtons.length; i++) {
+        for (let button of intervalButtons) {
 
-            intervalButtons[i].style.background = lightContainerColor;
-            intervalButtons[i].style.color = lightTextColor;
-            intervalButtons[i].style.border = lightBorderOutset;
+            button.classList.remove("night-theme");
+            button.classList.add("light-theme");
         
         }
 
-        for (let i = 0; i < controlButtons.length; i++) {
+        for (let button of controlButtons) {
 
-            controlButtons[i].style.background = lightContainerColor;
-            controlButtons[i].style.color = lightTextColor;
-            controlButtons[i].style.border = lightBorderOutset;
+            button.classList.remove("night-theme");
+            button.classList.add("light-theme");
 
         }
 
