@@ -39,22 +39,11 @@ body {
 }
 
 .interval-container button {
-    background: white;
     font-size: 16px;
     height: 50px;
     width: 125px;
-    color: #963737;
     border-radius: 5px 5px;
     font-family: 'Nunito Sans', sans-serif;
-    border: 5px outset #d34f4f;
-}
-
-.interval-container button:hover {
-    cursor: pointer;
-}
-
-.interval-container button:active {
-    border: 5px inset #d34f4f;
 }
 
 .countdown-container {
@@ -81,22 +70,33 @@ body {
 }
 
 .control-container button {
-    background: white;
     border-radius: 5px 5px;
     height: 100%;
     width: 100%;
-    border: 5px outset #d34f4f; 
     font-size: 16px;
-    color: #963737;
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.control-container button:hover {
-    cursor: pointer;
+.light-theme {
+    background: white;
+    border: 5px outset #d34f4f; 
+    color: #963737;
 }
 
-.control-container button:active {
+.light-theme:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.light-theme:active {
     border: 5px inset #d34f4f;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.night-theme {
+    background: black;
+    border: 5px outset green;
+    color: green;
 }
 
 #theme {
