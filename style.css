@@ -49,6 +49,10 @@ body {
     border: 5px outset #d34f4f;
 }
 
+.interval-container button:hover {
+    cursor: pointer;
+}
+
 .interval-container button:active {
     border: 5px inset #d34f4f;
 }
@@ -85,6 +89,10 @@ body {
     font-size: 16px;
     color: #963737;
     font-family: 'Nunito Sans', sans-serif;
+}
+
+.control-container button:hover {
+    cursor: pointer;
 }
 
 .control-container button:active {
