@@ -99,6 +99,16 @@ body {
     color: green;
 }
 
+.night-theme:hover {
+    cursor: pointer;
+    color: darkseagreen;
+}
+
+.night-theme:active {
+    border: 5px inset darkgreen;
+    color: darkgreen;
+}
+
 #theme {
     position: absolute;
     top: 20px;
