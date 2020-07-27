@@ -293,15 +293,18 @@ function updateTimer() {
 
     window.timer.start(key, countDown(totalSeconds), 1000, 1);
     
-    // Move this.
-    setTimeout(() => {resetTimerDisplay(key);}, totalSeconds * 1000);
+    setTimeout(() => {
+        
+        resetTimerDisplay(key);
+        playAudio("bell.ogg");
+
+    }, totalSeconds * 1000);
 
 }
 
 
 function resetTimerDisplay(key) {
 
-    playAudio("bell.ogg");
     window.timer.clear(key); 
     setTimer(document.getElementById(key).value); 
     document.getElementById("start").innerHTML = "Start"; 
