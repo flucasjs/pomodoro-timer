@@ -18,7 +18,7 @@ window.addEventListener("load", (event) => {
 
     if (window.style == "dark") { 
 
-        setTheme(document.getElementById("toggle"));
+        toggleTheme();
 
     }
     
@@ -146,7 +146,7 @@ document.getElementById("reset").addEventListener("click", (event) => {
 theme.addEventListener("click", (event) => {
 
     let element = event.target;
-    setTheme(element);
+    toggleTheme(element);
 
 });
 
@@ -312,7 +312,9 @@ function resetTimerDisplay(key) {
 
 }
 
-function setTheme(element) {
+function toggleTheme() {
+
+    let element = document.getElementById("toggle");
     
     element.classList.toggle(TOGGLEON);
     element.classList.toggle(TOGGLEOFF);
