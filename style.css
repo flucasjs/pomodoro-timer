@@ -8,6 +8,10 @@ body {
     padding: 0;
 }
 
+p {
+    user-select: none;
+}
+
 .title-container {
     margin: 5px auto 30px;
     width: 500px;
