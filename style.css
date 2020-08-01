@@ -22,7 +22,7 @@ p {
     font-size: 46px;
     text-align: center;
     color: white;
-    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'Montserrat Subrayada', Helvetica, sans-serif;
 }
 
 .container {
@@ -47,7 +47,7 @@ p {
     height: 50px;
     width: 125px;
     border-radius: 5px 5px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', Helvetica, sans-serif;
 }
 
 .countdown-container {
@@ -78,7 +78,7 @@ p {
     height: 100%;
     width: 100%;
     font-size: 16px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', Helvetica, sans-serif;
 }
 
 .light-theme {
