@@ -1,157 +1,6 @@
-// ---------- EVENT LISTENERS ---------- //
-
-window.addEventListener("load", (event) => {
-
-    document.getElementById("start").value = 0;
-    document.getElementById("pomodoro").value = 1500;
-    document.getElementById("long-break").value = 600;
-    document.getElementById("short-break").value = 300;
-
-    document.getElementById("start").dataset.currentTimer = "pomodoro";
-
-    window.timer = new Timer();
-
-    window.TOGGLEON = "fa-toggle-on";
-    window.TOGGLEOFF = "fa-toggle-off";
-
-    window.style = localStorage.getItem("THEME");
-
-    if (window.style == "dark") { 
-
-        toggleTheme();
-
-    }
-    
-});
-
-document.getElementById("pomodoro").addEventListener("click", (event) => {
-
-    let totalSeconds = document.getElementById("pomodoro").value;
-    let currentTimer = document.getElementById("start").dataset.currentTimer;
-
-    document.getElementById("start").dataset.currentTimer = "pomodoro";
-
-    if (start.value == 0) {
-
-        setTimer(totalSeconds);
-
-    } else if (start.value == 1) {
-
-        if (currentTimer != "pomodoro") {
-
-            timer.clear(currentTimer);
-            setTimer(totalSeconds);
-            start.value--;
-            start.innerHTML = "Start";
-           
-        }
-
-    }
-});
-
-document.getElementById("short-break").addEventListener("click", (event) => {
-
-    let totalSeconds = document.getElementById("short-break").value;
-    let currentTimer = document.getElementById("start").dataset.currentTimer;
-
-    document.getElementById("start").dataset.currentTimer = "short-break";
-
-    if (start.value == 0) {
-
-        setTimer(totalSeconds);
-
-    } else if (start.value == 1) {
-
-        if (currentTimer != "short-break") {
-
-            timer.clear(currentTimer);
-            setTimer(totalSeconds);
-            start.value--;
-            start.innerHTML = "Start";
-           
-        }
-
-    }
-    
-});
-
-document.getElementById("long-break").addEventListener("click", (event) => {
-
-    let totalSeconds = document.getElementById("long-break").value;
-    let currentTimer = document.getElementById("start").dataset.currentTimer;
-
-    document.getElementById("start").dataset.currentTimer = "long-break";
-
-    if (start.value == 0) {
-
-        setTimer(totalSeconds);
-
-    } else if (start.value == 1) {
-
-        if (currentTimer != "long-break") {
-
-            timer.clear(currentTimer);
-            setTimer(totalSeconds);
-            start.value--;
-            start.innerHTML = "Start";
-           
-        }
-
-    }
-       
-});
-
-document.getElementById("start").addEventListener("click", (event) => {
-
-    let start = document.getElementById("start");
-    let currentTimer = document.getElementById("start").dataset.currentTimer;
-    
-    if (start.value == 0) {
-
-        start.value++;
-        start.innerHTML = "Stop";
-        updateTimer();
-        
-
-    } else if (start.value == 1){ 
-        
-        start.value--;
-        start.innerHTML = "Start";
-        window.timer.clear(currentTimer);
-        document.getElementById("start").dataset.currentTimer = "continue";
-
-    };
-
-});
-
-document.getElementById("reset").addEventListener("click", (event) => {
-
-    let currentTimer = document.getElementById("start").dataset.currentTimer;
-    let continueTimer = document.getElementById("start").dataset.continueTimer;
-
-    if (currentTimer == "continue") {
-        
-        window.timer.clear("continue");
-        resetTimerDisplay(continueTimer);
-
-    } else {
-
-        window.timer.clear(currentTimer);
-        resetTimerDisplay(currentTimer);
-
-    }
-    
-});
-
-theme.addEventListener("click", (event) => {
-
-    let element = event.target;
-    toggleTheme(element);
-
-});
 
 
-// ---------- CLASS DEFINITIONS ---------- //
+// -------------------------------------------------- CLASS DEFINITIONS -------------------------------------------------- //
 
 class Timer {
 
@@ -199,31 +48,191 @@ class Timer {
 
 }
 
+// -------------------------------------------------- GLOBAL VARIABLES -------------------------------------------------- //
 
-// ---------- FUNCTION DEFINITIONS ---------- //
+    window.timer = new Timer();
+    window.TOGGLEON = "fa-toggle-on";
+    window.TOGGLEOFF = "fa-toggle-off";
 
-function displayTime(minutes, seconds) {
+    document.getElementById("start").value = 0;
+    document.getElementById("pomodoro").value = 1500;
+    document.getElementById("long-break").value = 600;
+    document.getElementById("short-break").value = 300;
 
-    if (seconds < 10) {
+    document.getElementById("start").dataset.currentTimer = "pomodoro";
 
-        seconds = (0 + String(seconds)).slice(-2);
+
+// -------------------------------------------------- EVENT LISTENERS -------------------------------------------------- //
+
+// Load toggled theme.
+document.addEventListener("load", (event) => {
+
+    window.style = localStorage.getItem("THEME");
+
+    if (window.style == "dark") { 
+
+        toggleTheme();
+
+    }
+
+});
+
+// Handle pomodoro button click;
+document.getElementById("pomodoro").addEventListener("click", (event) => {
+
+    let totalSeconds = document.getElementById("pomodoro").value;
+    let currentTimer = document.getElementById("start").dataset.currentTimer;
+
+    document.getElementById("start").dataset.currentTimer = "pomodoro";
+
+    if (start.value == 0) {
+
+        displayTime(totalSeconds);
+
+    } else if (start.value == 1) {
+
+        if (currentTimer != "pomodoro") {
+
+            timer.clear(currentTimer);
+            displayTime(totalSeconds);
+            start.value--;
+            start.innerHTML = "Start";
+           
+        }
+
+    }
+});
+
+// Handle short-break button click.
+document.getElementById("short-break").addEventListener("click", (event) => {
+
+    let totalSeconds = document.getElementById("short-break").value;
+    let currentTimer = document.getElementById("start").dataset.currentTimer;
+
+    document.getElementById("start").dataset.currentTimer = "short-break";
+
+    if (start.value == 0) {
+
+        displayTime(totalSeconds);
+
+    } else if (start.value == 1) {
+
+        if (currentTimer != "short-break") {
+
+            timer.clear(currentTimer);
+            displayTime(totalSeconds);
+            start.value--;
+            start.innerHTML = "Start";
+           
+        }
 
     }
     
-    document.getElementById("countdown").innerHTML = `${minutes}:${seconds}`;
+});
+
+// Handle long-break buttong click.
+document.getElementById("long-break").addEventListener("click", (event) => {
+
+    let totalSeconds = document.getElementById("long-break").value;
+    let currentTimer = document.getElementById("start").dataset.currentTimer;
+
+    document.getElementById("start").dataset.currentTimer = "long-break";
+
+    if (start.value == 0) {
+
+        displayTime(totalSeconds);
+
+    } else if (start.value == 1) {
+
+        if (currentTimer != "long-break") {
+
+            timer.clear(currentTimer);
+            displayTime(totalSeconds);
+            start.value--;
+            start.innerHTML = "Start";
+           
+        }
+
+    }
+       
+});
+
+// Handle start button click.
+document.getElementById("start").addEventListener("click", (event) => {
+
+    let start = document.getElementById("start");
+    let currentTimer = document.getElementById("start").dataset.currentTimer;
+    
+    if (start.value == 0) {
+
+        start.value++;
+        start.innerHTML = "Stop";
+        updateTimer();
+        
+
+    } else if (start.value == 1){ 
+        
+        start.value--;
+        start.innerHTML = "Start";
+        window.timer.clear(currentTimer);
+        document.getElementById("start").dataset.currentTimer = "continue";
+
+    };
+
+});
+
+// Handle reset button click.
+document.getElementById("reset").addEventListener("click", (event) => {
+
+    let currentTimer = document.getElementById("start").dataset.currentTimer;
+    let continueTimer = document.getElementById("start").dataset.continueTimer;
+
+    if (currentTimer == "continue") {
+        
+        window.timer.clear("continue");
+        resetTimerDisplay(continueTimer);
+
+    } else {
+
+        window.timer.clear(currentTimer);
+        resetTimerDisplay(currentTimer);
+
+    }
+    
+});
+
+
+// Handle toggle theme element click.
+theme.addEventListener("click", (event) => {
+
+    let element = event.target;
+    toggleTheme(element);
+
+});
+
+
+
+// -------------------------------------------------- FUNCTION DEFINITIONS -------------------------------------------------- //
+
+// Display the amount of time remaining in the format mm:ss in the countdown element.
+function displayTime(totalSeconds) {
+
+    let timeObj = secondsToMinutes(totalSeconds);
+
+    if (timeObj.seconds < 10) {
+
+        timeObj.seconds = (0 + String(timeObj.seconds)).slice(-2);
+
+    }
+    
+    document.getElementById("countdown").innerHTML = `${timeObj.minutes}:${timeObj.seconds}`;
     
 }
 
-function setTimer(time) {
+// Convert seconds to object containing minutes and seconds as properties.
+function secondsToMinutes(totalSeconds) {
 
-    let timeObj = convertSeconds(time);
-    displayTime(timeObj.minutes, timeObj.seconds);
-
-}
-
-function convertSeconds(time) {
-
-    return { minutes: Math.floor(time / 60), seconds: time % 60 };
+    return { minutes: Math.floor(totalSeconds / 60), seconds: totalSeconds % 60 };
 
 }
 
@@ -236,7 +245,7 @@ function countDown(totalSeconds) {
 
         secondsPassed++;
         secondsLeft = totalSeconds - secondsPassed;
-        setTimer(secondsLeft)
+        displayTime(secondsLeft)
 
     }
     
@@ -306,7 +315,7 @@ function updateTimer() {
 function resetTimerDisplay(key) {
 
     window.timer.clear(key); 
-    setTimer(document.getElementById(key).value); 
+    displayTime(document.getElementById(key).value); 
     document.getElementById("start").innerHTML = "Start"; 
     document.getElementById("start").value = 0;
 
