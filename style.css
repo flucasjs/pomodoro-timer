@@ -128,3 +128,12 @@ p {
 #theme i:hover {
     cursor: pointer;
 }
+
+.button-in {
+    border-style: inset;
+}
+
+.button-out {
+    border-style: outset;
+}
+
