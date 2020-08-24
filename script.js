@@ -48,6 +48,48 @@ class Timer {
 
 }
 
+class Time {
+
+    constructor(totalSeconds) {
+
+        this.seconds = totalSeconds % 60;
+
+        if (this.seconds < 10) {
+        
+            this.seconds = (0 + String(this.seconds)).slice(-2);
+
+        }
+
+        this.minutes = totalSeconds / 60;
+        this.totalSeconds = totalSeconds;
+
+    }
+
+    getTime() {
+
+        return `${this.minutes}:${this.seconds}`
+
+    }
+
+
+    setTime(totalSeconds) {
+
+        this.seconds = totalSeconds % 60;
+
+        if (this.seconds < 10) {
+        
+            this.seconds = (0 + String(this.seconds)).slice(-2);
+
+        }
+
+        this.minutes = totalSeconds / 60;
+        this.totalSeconds = totalSeconds;
+
+    }
+
+
+}
+
 // -------------------------------------------------- GLOBAL VARIABLES -------------------------------------------------- //
 
     window.timer = new Timer();
