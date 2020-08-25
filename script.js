@@ -1,5 +1,3 @@
-
-
 // -------------------------------------------------- CLASS DEFINITIONS -------------------------------------------------- //
 
 class Timer {
@@ -87,12 +85,19 @@ class Time {
 
     }
 
+    displayTime(elementID) {
+
+        document.getElementById(elementID).innerHTML = `${this.minutes}:${this.seconds}`;
+
+    }
+
 
 }
 
 // -------------------------------------------------- GLOBAL VARIABLES -------------------------------------------------- //
 
     window.timer = new Timer();
+    window.time = new Time();
     window.TOGGLEON = "fa-toggle-on";
     window.TOGGLEOFF = "fa-toggle-off";
 
@@ -123,20 +128,21 @@ document.addEventListener("load", (event) => {
 document.getElementById("pomodoro").addEventListener("click", (event) => {
 
     let totalSeconds = document.getElementById("pomodoro").value;
+    time.setTime(totalSeconds);
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
     document.getElementById("start").dataset.currentTimer = "pomodoro";
 
     if (start.value == 0) {
 
-        displayTime(totalSeconds);
+        time.displayTime('countdown');
 
     } else if (start.value == 1) {
 
         if (currentTimer != "pomodoro") {
 
             timer.clear(currentTimer);
-            displayTime(totalSeconds);
+            time.displayTime('countdown');
             start.value--;
             start.innerHTML = "Start";
            
@@ -149,20 +155,21 @@ document.getElementById("pomodoro").addEventListener("click", (event) => {
 document.getElementById("short-break").addEventListener("click", (event) => {
 
     let totalSeconds = document.getElementById("short-break").value;
+    time.setTime(totalSeconds);
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
     document.getElementById("start").dataset.currentTimer = "short-break";
 
     if (start.value == 0) {
 
-        displayTime(totalSeconds);
+        time.displayTime('countdown');
 
     } else if (start.value == 1) {
 
         if (currentTimer != "short-break") {
 
             timer.clear(currentTimer);
-            displayTime(totalSeconds);
+            time.displayTime('countdown');
             start.value--;
             start.innerHTML = "Start";
            
@@ -176,20 +183,21 @@ document.getElementById("short-break").addEventListener("click", (event) => {
 document.getElementById("long-break").addEventListener("click", (event) => {
 
     let totalSeconds = document.getElementById("long-break").value;
+    time.setTime(totalSeconds);
     let currentTimer = document.getElementById("start").dataset.currentTimer;
 
     document.getElementById("start").dataset.currentTimer = "long-break";
 
     if (start.value == 0) {
 
-        displayTime(totalSeconds);
+        time.displayTime('countdown');
 
     } else if (start.value == 1) {
 
         if (currentTimer != "long-break") {
 
             timer.clear(currentTimer);
-            displayTime(totalSeconds);
+            time.displayTime('countdown');
             start.value--;
             start.innerHTML = "Start";
            
