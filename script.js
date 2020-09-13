@@ -353,9 +353,9 @@ function updateTimer() {
     window.timer.start(key, countDown(totalSeconds), 1000, 1);
     
     setTimeout(() => {
-        
+
         resetTimerDisplay(key);
-        playAudio("bell.ogg");
+        playAudio("timeout_sound.ogg");
 
     }, totalSeconds * 1000);
 
@@ -444,6 +444,7 @@ function toggleTheme() {
 function playAudio(soundFile) {
 
     let audio = new Audio(soundFile);
+    audio.volume = 0.2;
     audio.play()
 
 }
