@@ -355,7 +355,7 @@ function updateTimer() {
     setTimeout(() => {
 
         resetTimerDisplay(key);
-        playAudio("timeout_sound.ogg");
+        playAudio("./assets/timeout_sound.ogg");
 
     }, totalSeconds * 1000);
 
